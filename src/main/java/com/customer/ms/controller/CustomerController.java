@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.customer.ms.dao.CustomerDAO;
 import com.customer.ms.model.Customer;
 import com.customer.ms.model.CustomerM;
+import com.customer.ms.repository.CustomerRepository;
 import com.customer.ms.service.CustomerService;
+
 
 @RestController
 public class CustomerController {
@@ -84,6 +86,22 @@ public class CustomerController {
 	public CustomerM addMongoCustomer(@RequestBody CustomerM customerM) {
 		CustomerM cust = customerService.addCustomer(customerM);
 		return cust;
+	}
+	
+	@RequestMapping(value = "/mongoCustomer/{cusId}", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public CustomerM updateMongoCustomer(@RequestBody CustomerM customerM, @PathVariable("cusId") String cusId) {
+		CustomerM c = customerService.findById(cusId);
+		c.setCusId(customerM.getCusId());
+		c.setCusName(customerM.getCusName());
+		c.setAddress(customerM.getAddress());
+		CustomerM custM = customerService.updateCustomer(c);
+		return custM;
+	}
+
+	
+	@RequestMapping(value = "/mongoCustomer/{cusId}", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public void deleteMongoCustomer(@PathVariable("cusId") String cusId) {
+		customerService.deleteCustomer(cusId);
 	}
 	
 }

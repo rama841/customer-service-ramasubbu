@@ -14,6 +14,6 @@ public interface CustomerService {
 	
 	CustomerM updateCustomer(CustomerM customer);
 	
-	CustomerM deleteCustomer(String cusId);
+	void deleteCustomer(String cusId);
 
 }

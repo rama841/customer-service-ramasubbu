@@ -37,14 +37,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerM updateCustomer(CustomerM customer) {
-		// TODO Auto-generated method stub
-		return null;
+		CustomerM c = customerRepository.save(customer);
+		return c;
 	}
 
 	@Override
-	public CustomerM deleteCustomer(String cusId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteCustomer(String cusId) {
+		customerRepository.deleteById(cusId);
 	}
 	
 	
