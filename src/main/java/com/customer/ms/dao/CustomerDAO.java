@@ -14,6 +14,19 @@ public class CustomerDAO {
 		 initCust();
 	}
 	
+	
+	/**
+	 * 
+	 * 
+MongoClientURI uri = new MongoClientURI(
+    "mongodb+srv://dbuser:MonCool123@cluster0.vz7ka.mongodb.net/customerservice?retryWrites=true&w=majority");
+
+MongoClient mongoClient = new MongoClient(uri);
+MongoDatabase database = mongoClient.getDatabase("test");
+
+	 * 
+	 */
+	
 	private static void initCust() {
 		
 		Customer cust1 = new Customer("C01", "Smith", "NY");
